@@ -1,24 +1,14 @@
-import { Router } from "express"
-import UserRoutes from "./routers/UserRoutes.js"
+import { Router } from "express";
+import { LoginRoutes } from "./routers/LoginRoutes.js";
 
-export default class AppRouter{
+export default class AppRouter {
+  constructor() {
+    this.router = Router();
+  }
 
-constructor(){
+  setRoutes() {
+    this.router.use("/login", LoginRoutes.router);
 
-this.router = Router()
-
+    return this.router;
+  }
 }
-
-  setRoutes(){
-
-
-    this.router.use("/users", UserRoutes.router)
-
-
-
-    return this.router
-}
-
-
-}
-
