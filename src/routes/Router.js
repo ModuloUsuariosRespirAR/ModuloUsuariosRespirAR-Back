@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { LoginRoutes } from "./routers/LoginRoutes.js";
+import { UserRoutes } from "./routers/UserRoutes.js";
 
 export default class AppRouter {
   constructor() {
@@ -8,6 +9,7 @@ export default class AppRouter {
 
   setRoutes() {
     this.router.use("/login", LoginRoutes.router);
+    this.router.use("/users", UserRoutes.router);
 
     return this.router;
   }

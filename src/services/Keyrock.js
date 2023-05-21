@@ -89,6 +89,37 @@ export class Keyrock {
     }
   }
 
+  static async getUsers(token) {
+    const result = await axios
+      .get(`${this.baseUrl}/v1/users`, {
+        headers: {
+          "X-Auth-token": token,
+        },
+      })
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        if (error.response) {
+          return {
+            error: {
+              statusCode: error.response.status,
+              message: error.response.data.error.message,
+            },
+          };
+        } else {
+          return {
+            error: {
+              statusCode: 500,
+              message: "Keyrock connection failed",
+            },
+          };
+        }
+      });
+
+    return result;
+  }
+
   static async getUserInfo(accessToken) {
     const user = await axios
       .get(`${this.baseUrl}/user`, {
@@ -102,8 +133,6 @@ export class Keyrock {
       .catch((error) => {
         return error;
       });
-
-    console.log(user);
 
     return user;
   }
