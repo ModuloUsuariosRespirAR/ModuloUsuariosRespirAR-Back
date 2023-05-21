@@ -21,8 +21,8 @@
   apiToken: token,<br>
   user: {UserInfo}<br>
   }
-- Error: {<br>
-  error:<br>
+- Error: <br>
+  error:{<br>
   statusCode: code,<br>
   message: errorMessage<br>
     }<br>
