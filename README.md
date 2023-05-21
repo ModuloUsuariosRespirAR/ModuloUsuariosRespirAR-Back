@@ -16,7 +16,7 @@
 
 #### Response:
 
-- Successfull: {
+- Successfull: {<br>
   accesToken: token,
   apiToken: token,
   user: {UserInfo}
