@@ -6,25 +6,25 @@
 
 #### Request:
 
-- Body:<br> {<br>
+- Body: {<br>
   username: example@test.com,<br>
   password: example<br>
   }
-- Headers:<br> {<br>
+- Headers: {<br>
   Content-Type: application/json<br>
   }
 
 #### Response:
 
-- Successfull:<br> {<br
-    accesToken: token,<br>
-    apiToken: token,<br>
-    user: {UserInfo}<br>
+- Successfull: {<br>
+  accesToken: token,<br>
+  apiToken: token,<br>
+  user: {UserInfo}<br>
   }
-- Error:<br>{<br>
-    error:{<br>
-      statusCode: code,<br>
-      message: errorMessage<br>
+- Error: {<br>
+  error:{<br>
+  statusCode: code,<br>
+  message: errorMessage<br>
     }<br>
   }
 
@@ -38,13 +38,13 @@
 
 #### Response:
 
-- Successfull:<br>{<br>
-    users: [{users...}]<br>
+- Successfull: {<br>
+  users: [{users...}]<br>
   }
-- Error:<br> {<br>
-    error:{<br>
-      statusCode: code,<br>
-      message: errorMessage<br>
+- Error: {<br>
+  error:{<br>
+  statusCode: code,<br>
+  message: errorMessage<br>
     }<br>
   }
 
