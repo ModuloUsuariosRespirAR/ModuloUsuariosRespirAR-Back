@@ -22,11 +22,11 @@
   user: {UserInfo}<br>
   }
 - Error: {<br>
-  error:{<br>
+  error:<br>
   statusCode: code,<br>
   message: errorMessage<br>
     }<br>
-  }
+  
 
 ### UsersList : /users/list
 
@@ -41,11 +41,11 @@
 - Successfull: {<br>
   users: [{users...}]<br>
   }
-- Error: {<br>
+- Error: <br>
   error:{<br>
   statusCode: code,<br>
   message: errorMessage<br>
     }<br>
-  }
+  
 
 <hr />
