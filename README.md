@@ -6,46 +6,46 @@
 
 #### Request:
 
-- Body: {
-  username: example@test.com,
-  password: example
+- Body: {<br>
+  username: example@test.com,<br>
+  password: example<br>
   }
-- Headers: {
-  Content-Type: application/json
+- Headers: {<br>
+  Content-Type: application/json<br>
   }
 
 #### Response:
 
 - Successfull: {<br>
-  accesToken: token,
-  apiToken: token,
-  user: {UserInfo}
+  accesToken: token,<br>
+  apiToken: token,<br>
+  user: {UserInfo}<br>
   }
-- Error: {
-  error:{
-  statusCode: code,
-  message: errorMessage
-  }
+- Error: {<br>
+  error:{<br>
+  statusCode: code,<br>
+  message: errorMessage<br>
+  }<br>
   }
 
 ### UsersList : /users/list
 
 #### Request:
 
-- Headers: {
-  api-token: apiToken
+- Headers: {<br>
+  api-token: apiToken<br>
   }
 
 #### Response:
 
-- Successfull: {
-  users: [{users...}]
+- Successfull: {<br>
+  users: [{users...}]<br>
   }
-- Error: {
-  error:{
-  statusCode: code,
-  message: errorMessage
-  }
+- Error: {<br>
+  error:{<br>
+  statusCode: code,<br>
+  message: errorMessage<br>
+  }<br>
   }
 
 <hr />
