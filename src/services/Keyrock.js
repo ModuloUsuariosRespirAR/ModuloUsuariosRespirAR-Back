@@ -89,6 +89,25 @@ export class Keyrock {
     }
   }
 
+  static async getUserInfo(accessToken) {
+    const user = await axios
+      .get(`${this.baseUrl}/user`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then((res) => {
+        return res.data;
+      })
+      .catch((error) => {
+        return error;
+      });
+
+    console.log(user);
+
+    return user;
+  }
+
   static buildHeader() {
     const key = `${this.appId}:${this.appSecret}`;
     const base64 = new Buffer(key).toString("base64");

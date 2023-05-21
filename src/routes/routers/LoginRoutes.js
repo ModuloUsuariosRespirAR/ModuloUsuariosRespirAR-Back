@@ -14,6 +14,7 @@ export class LoginRoutes {
         password,
         accessToken
       );
+      const user = await Keyrock.getUserInfo(accessToken);
 
       if (accessToken.error || apiToken.error) {
         res
@@ -23,6 +24,7 @@ export class LoginRoutes {
         res.json({
           accessToken,
           apiToken,
+          user,
         });
       }
     });
