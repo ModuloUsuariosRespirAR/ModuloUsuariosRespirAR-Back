@@ -137,6 +137,34 @@ export class Keyrock {
     return user;
   }
 
+  static async deleteUser(token, userId){
+    const result = await axios.delete(`${this.baseUrl}/v1/users/${userId}`, {
+      headers:{
+        "X-Auth-token": token
+      }
+    }).then(response => {
+      return response.data
+    }).catch(error => {
+      if(error.response){
+        return {
+          error: {
+            statusCode: error.response.status,
+            message: error.response.data.error.message,
+          }
+        }
+      }else{
+        return {
+          error: {
+            statusCode: 500,
+            message: "Keyrock connection failed",
+          },
+        };
+      }
+      
+    })
+    return result
+  }
+
   static buildHeader() {
     const key = `${this.appId}:${this.appSecret}`;
     const base64 = new Buffer(key).toString("base64");
