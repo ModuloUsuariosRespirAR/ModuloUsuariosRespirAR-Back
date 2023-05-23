@@ -167,11 +167,49 @@ export class Keyrock {
     return result;
   }
 
-  static async createUsear(reqBody, token) {
+  static async createUser(reqBody, token) {
     const { user } = reqBody;
     const result = await axios
       .post(
         `${this.baseUrl}/v1/users`,
+        {
+          user,
+        },
+        {
+          headers: {
+            "X-Auth-token": token,
+          },
+        }
+      )
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        if (error.response) {
+          return {
+            error: {
+              statusCode: error.response.status,
+              message: error.response.data.error.message,
+            },
+          };
+        } else {
+          return {
+            error: {
+              statusCode: 500,
+              message: "Keyrock connection failed",
+            },
+          };
+        }
+      });
+
+    return result;
+  }
+
+  static async updateUser(reqBody, token, userId) {
+    const { user } = reqBody;
+    const result = await axios
+      .patch(
+        `${this.baseUrl}/v1/users/${userId}`,
         {
           user,
         },

@@ -27,8 +27,23 @@ export class UsersController {
   }
 
   static async create(req, res){
-    const result = await Keyrock.createUsear(req.body, req.headers["api-token"])
+    const result = await Keyrock.createUser(req.body, req.headers["api-token"])
 
-    res.send(result)
+    if(result.error){
+      res.status(result.error.statusCode).json(result)
+    }else{
+      res.json(result)
+    }
   }
+
+  static async update(req, res){
+    const result = await Keyrock.updateUser(req.body, req.headers["api-token"], req.params.userId)
+
+    if(result.error){
+      res.status(result.error.statusCode).json(result)
+    }else{
+      res.json(result)
+    }
+  }
+
 }
