@@ -207,6 +207,7 @@ export class Keyrock {
 
   static async updateUser(reqBody, token, userId) {
     const { user } = reqBody;
+    console.log(user);
     const result = await axios
       .patch(
         `${this.baseUrl}/v1/users/${userId}`,

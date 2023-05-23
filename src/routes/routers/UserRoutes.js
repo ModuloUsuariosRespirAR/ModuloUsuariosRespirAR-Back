@@ -7,7 +7,7 @@ export class UserRoutes {
   static {
     this.router.post("/create", UsersController.create);
     this.router.post("/update/:userId", UsersController.update)
-    this.router.delete("/:userId", UsersController.delete);
+    this.router.delete("/delete/:userId", UsersController.delete);
     this.router.get("/list", UsersController.list);
   }
 }

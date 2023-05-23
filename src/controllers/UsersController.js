@@ -18,7 +18,7 @@ export class UsersController {
     const token = req.headers["api-token"];
     const userId = req.params.userId;
     const result = await Keyrock.deleteUser(token, userId);
-    
+
     if(result.error){
       res.status(result.error.statusCode).json(result)
     }else{
