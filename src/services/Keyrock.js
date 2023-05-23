@@ -168,14 +168,12 @@ export class Keyrock {
   }
 
   static async createUsear(reqBody, token) {
-    console.log(token);
-    const {user} = reqBody
-    console.log(user);
+    const { user } = reqBody;
     const result = await axios
       .post(
         `${this.baseUrl}/v1/users`,
         {
-          user
+          user,
         },
         {
           headers: {
