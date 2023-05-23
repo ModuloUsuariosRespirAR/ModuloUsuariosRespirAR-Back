@@ -1,5 +1,7 @@
 import { Keyrock } from "./../services/Keyrock.js";
 
+
+
 export class UsersController {
   static async list(req, res) {
     const token = req.headers["api-token"];
@@ -22,5 +24,11 @@ export class UsersController {
     }else{
       res.json(result)
     }
+  }
+
+  static async create(req, res){
+    const result = await Keyrock.createUsear(req.body, req.headers["api-token"])
+
+    res.send(result)
   }
 }
