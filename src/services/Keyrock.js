@@ -7,6 +7,9 @@ export class Keyrock {
   static appId = process.env.KEYROCK_APP_ID;
   static appSecret = process.env.KEYROCK_APP_SECRET;
 
+
+  //Users
+
   static async getAccessToken(username, password) {
     const result = await axios
       .post(
@@ -243,6 +246,43 @@ export class Keyrock {
 
     return result;
   }
+
+  //Roles
+
+  static async createRole(rolName, token){
+
+    const result = await axios.post(`${this.baseUrl}/v1/applications/${this.appId}/roles`, {
+      role:{
+        name: rolName
+      }
+    }, {
+      headers:{
+        "X-Auth-token": token
+      }
+    }).then(response => {return response.data}).catch(error => {
+      if (error.response) {
+        return {
+          error: {
+            statusCode: error.response.status,
+            message: error.response.data.error.message,
+          },
+        };
+      } else {
+        return {
+          error: {
+            statusCode: 500,
+            message: "Keyrock connection failed",
+          },
+        };
+      }
+    })
+
+    console.log(result);
+    return result;
+
+  }
+
+  //Utils
 
   static buildHeader() {
     const key = `${this.appId}:${this.appSecret}`;

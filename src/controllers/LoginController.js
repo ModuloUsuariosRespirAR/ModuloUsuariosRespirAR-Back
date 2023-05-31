@@ -5,17 +5,17 @@ export class LoginController {
     const { username, password } = req.body;
 
     const accessToken = await Keyrock.getAccessToken(username, password);
-    const apiToken = await Keyrock.getApiToken(username, password, accessToken);
+    const authToken = await Keyrock.getApiToken(username, password, accessToken);
     const user = await Keyrock.getUserInfo(accessToken);
 
-    if (accessToken.error || apiToken.error) {
+    if (accessToken.error || authToken.error) {
       res
         .status(apiToken.error.statusCode)
         .json({ error: apiToken.error.message });
     } else {
       res.json({
         accessToken,
-        apiToken,
+        "X-Auth-token": authToken,
         user,
       });
     }
