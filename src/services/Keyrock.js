@@ -210,7 +210,6 @@ export class Keyrock {
 
   static async updateUser(reqBody, token, userId) {
     const { user } = reqBody;
-    console.log(user);
     const result = await axios
       .patch(
         `${this.baseUrl}/v1/users/${userId}`,
@@ -249,7 +248,7 @@ export class Keyrock {
 
   //Roles
 
-  static async createRole(rolName, token){
+  static async createRole(rolName, token) {
 
     const result = await axios.post(`${this.baseUrl}/v1/applications/${this.appId}/roles`, {
       role:{
@@ -276,11 +275,67 @@ export class Keyrock {
         };
       }
     })
-
-    console.log(result);
     return result;
-
   }
+
+  static async getRoles(token) {
+    const result = await axios.get(`${this.baseUrl}/v1/applications/${this.appId}/roles`, {
+      headers:{
+        "X-Auth-token": token
+      }
+    })
+    .then(response => {return response.data})
+    .catch(error => {
+      if (error.response) {
+        return {
+          error: {
+            statusCode: error.response.status,
+            message: error.response.data.error.message,
+          },
+        };
+      } else {
+        return {
+          error: {
+            statusCode: 500,
+            message: "Keyrock connection failed",
+          },
+        };
+      }
+    })
+    return result
+  }
+
+  static async updateRole(rolName, rolId, token) {
+
+    const result = await axios.patch(`${this.baseUrl}/v1/applications/${this.appId}/roles/${rolId}`, {
+        role: {
+          name: rolName
+        }
+    }, {
+      headers:{
+        "X-Auth-token": token
+      }
+    }).then(response => {return response.data})
+    .catch(error => {
+      if (error.response) {
+        return {
+          error: {
+            statusCode: error.response.status,
+            message: error.response.data.error.message,
+          },
+        };
+      } else {
+        return {
+          error: {
+            statusCode: 500,
+            message: "Keyrock connection failed",
+          },
+        };
+      }
+    })
+    return result
+  }
+
 
   //Utils
 
