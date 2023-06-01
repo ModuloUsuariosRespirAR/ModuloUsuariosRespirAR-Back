@@ -42,4 +42,18 @@ export class RolesController {
         res.json(result)
       }
     } 
+
+    static async delete(req, res) {
+
+      const rolId = req.params.rolId;
+      const token = req.headers["x-auth-token"];
+
+      const result = await Keyrock.deleteRole(rolId, token);
+
+      if(result.error){
+        res.status(result.error.statusCode).json(result)
+      }else{
+        res.json(result)
+      }
+    }
 }

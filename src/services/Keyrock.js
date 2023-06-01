@@ -302,7 +302,7 @@ export class Keyrock {
         };
       }
     })
-    return result
+    return result;
   }
 
   static async updateRole(rolName, rolId, token) {
@@ -333,7 +333,35 @@ export class Keyrock {
         };
       }
     })
-    return result
+    return result;
+  }
+
+  static async deleteRole(rolId, token) {
+    
+    const result = await axios.delete(`${this.baseUrl}/v1/applications/${this.appId}/roles/${rolId}`, {
+      headers:{
+        "X-Auth-token": token
+      }
+    })
+    .then(response => {return response.data})
+    .catch(error => {
+      if (error.response) {
+        return {
+          error: {
+            statusCode: error.response.status,
+            message: error.response.data.error.message,
+          },
+        };
+      } else {
+        return {
+          error: {
+            statusCode: 500,
+            message: "Keyrock connection failed",
+          },
+        };
+      }
+    })
+    return result;
   }
 
 
