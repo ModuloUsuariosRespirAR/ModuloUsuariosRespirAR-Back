@@ -4,7 +4,6 @@ import { Keyrock } from "./../services/Keyrock.js";
 
 export class RolesController {
 
-
     static async create(req, res) {
         const token = req.headers["x-auth-token"];
         const rolName = req.body.rolName;

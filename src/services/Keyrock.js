@@ -248,6 +248,7 @@ export class Keyrock {
 
   //Roles
 
+
   static async createRole(rolName, token) {
 
     const result = await axios.post(`${this.baseUrl}/v1/applications/${this.appId}/roles`, {
