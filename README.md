@@ -82,6 +82,7 @@
 
 
 <hr />
+
 ### Get Roles : /roles/list | GET
 
 #### Request:
