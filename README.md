@@ -2,8 +2,6 @@
 
 ## Info: 📋
 
-### Generals:
-
 #### UserInfo:
 [![UserInfo](https://prnt.sc/3WInEaTMi9NA "UserInfo")](https://prnt.sc/3WInEaTMi9NA "UserInfo")
 
