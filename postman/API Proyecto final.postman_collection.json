@@ -1,0 +1,336 @@
+{
+	"info": {
+		"_postman_id": "34999e3a-9ca0-4d19-b09d-babeae603014",
+		"name": "API Proyecto final",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-token",
+								"value": "3100d6cb-8a75-4169-885c-192022efe1b8",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\":{\r\n        \"displayName\": \"Ale Campos\",\r\n        \"username\": \"juanPerez\",\r\n        \"email\": \"ale@test.com\",\r\n        \"password\": \"1234\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin@test.com\",\r\n    \"password\": \"1234\"\r\n}   ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-token",
+								"value": "fd20c9e8-d305-463d-9261-e3e0379c5ce3",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/users/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Auth-token",
+								"value": "f5924c42-4fdd-4e0c-834c-ac78d7563aea",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/users/delete/:userId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"delete",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "sd"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Auth-token",
+								"value": "a6a18d94-bde5-44c8-b780-8150c4296809",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\":{\r\n        \"username\": \"New Ale\",\r\n        \"password\": \"12345\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/update/16b9ea3b-ee7f-4fcf-811c-1315137d574a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"update",
+								"16b9ea3b-ee7f-4fcf-811c-1315137d574a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-token",
+								"value": "a60320a0-8795-4d51-b411-d8d14f7f34ec",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rolName\": \"Rolanme\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/roles/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"roles",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Roles list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-token",
+								"value": "fd20c9e8-d305-463d-9261-e3e0379c5ce3",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/roles/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"roles",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Auth-token",
+								"value": "9dfb4aa8-fc44-4126-af72-9b98a8cffc45",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rolName\": \"NewRole Update\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/roles/update/50fb0170-f9fd-484b-932c-d15aa73c3cfc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"roles",
+								"update",
+								"50fb0170-f9fd-484b-932c-d15aa73c3cfc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Auth-token",
+								"value": "44a23144-becb-4607-8928-aed1be53d4fc",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/roles/delete/291e8cb9-4be6-4d7a-86a1-6d1ae15ec7a0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"roles",
+								"delete",
+								"291e8cb9-4be6-4d7a-86a1-6d1ae15ec7a0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Role",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Auth-token",
+								"value": "fd20c9e8-d305-463d-9261-e3e0379c5ce3",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rolId\": \"7c819ad8-62a6-4a83-814c-ebbc44dc93eb\",\r\n    \"userId\": \"16b9ea3b-ee7f-4fcf-811c-1315137d574a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/roles/assign",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"roles",
+								"assign"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
