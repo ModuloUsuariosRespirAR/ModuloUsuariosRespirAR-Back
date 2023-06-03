@@ -56,4 +56,17 @@ export class RolesController {
         res.json(result)
       }
     }
+
+    static async assignRole(req, res) {
+      const token = req.headers["x-auth-token"];
+      const {rolId, userId} = req.body;
+
+      const result = await Keyrock.assingRole(rolId, userId, token);
+
+      if(result.error){
+        res.status(result.error.statusCode).json(result)
+      }else{
+        res.json(result)
+      }      
+    }
 }

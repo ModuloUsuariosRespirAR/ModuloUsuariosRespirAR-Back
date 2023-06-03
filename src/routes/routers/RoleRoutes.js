@@ -9,6 +9,6 @@ export class RoleRoutes {
     this.router.get("/list", RolesController.list);
     this.router.post("/update/:rolId", RolesController.update);
     this.router.delete("/delete/:rolId", RolesController.delete);
-    
+    this.router.post("/assign", RolesController.assignRole);
   }
 }

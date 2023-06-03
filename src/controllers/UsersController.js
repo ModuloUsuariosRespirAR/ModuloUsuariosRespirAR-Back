@@ -5,7 +5,6 @@ import { Keyrock } from "./../services/Keyrock.js";
 export class UsersController {
   static async list(req, res) {
     const token = req.headers["x-auth-token"];
-    console.log(token);
     const result = await Keyrock.getUsers(token);
 
     if(result.error){

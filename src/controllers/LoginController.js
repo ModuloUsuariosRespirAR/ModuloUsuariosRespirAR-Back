@@ -10,8 +10,9 @@ export class LoginController {
 
     if (accessToken.error || authToken.error) {
       res
-        .status(apiToken.error.statusCode)
-        .json({ error: apiToken.error.message });
+        .status(authToken.error.statusCode)
+        .json({ error: authToken.error.message,
+        statusCode: authToken.error.statusCode });
     } else {
       res.json({
         accessToken,

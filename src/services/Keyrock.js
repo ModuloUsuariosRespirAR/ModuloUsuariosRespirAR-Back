@@ -364,6 +364,35 @@ export class Keyrock {
     return result;
   }
 
+  static async assingRole(rolId, userId, token) {
+console.log(token);
+    const result = await axios.put(`${this.baseUrl}/v1/applications/${this.appId}/users/${userId}/roles/${rolId}`, {}, {
+      headers:{
+        "X-Auth-token": token,
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => { return response.data})
+    .catch(error => {
+      if (error.response) {
+        return {
+          error: {
+            statusCode: error.response.status,
+            message: error.response.data.error.message,
+          },
+        };
+      } else {
+        return {
+          error: {
+            statusCode: 500,
+            message: "Keyrock connection failed",
+          },
+        };
+      }
+    })
+    return result;
+  }
+
 
   //Utils
 
