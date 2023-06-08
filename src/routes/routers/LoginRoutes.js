@@ -6,6 +6,7 @@ export class LoginRoutes {
   static router = Router();
 
   static {
+    this.router.post("/retrieve", LoginController.retrieveSession);
     this.router.post("/", LoginController.login);
   }
 }
