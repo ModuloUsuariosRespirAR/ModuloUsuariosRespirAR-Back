@@ -27,6 +27,20 @@ export class UsersController {
       res.json(result)
     }
   }
+
+  static async getUserRoles(req, res) {
+    const userId = req.params.userId;
+    const token = req.headers["x-auth-token"]
+
+    const result = await Keyrock.getUserRoles(userId, token)
+
+    if(result.error){
+      res.status(result.error.statusCode).json(result)
+    }else{
+      res.json(result)
+    }
+
+  }
  
   static async delete(req, res) {
     const token = req.headers["x-auth-token"];

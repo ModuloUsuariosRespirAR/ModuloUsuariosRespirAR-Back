@@ -7,7 +7,6 @@ export class Keyrock {
   static appId = process.env.KEYROCK_APP_ID;
   static appSecret = process.env.KEYROCK_APP_SECRET;
 
-
   //Users
 
   static async getAccessToken(username, password) {
@@ -93,33 +92,36 @@ export class Keyrock {
   }
 
   static async getUserById(userId, token) {
-
-    const result = await axios.get(`${this.baseUrl}/v1/users/${userId}`, {
-      headers: {
-        "X-Auth-token": token
-      }
-    }).then(response => { return response.data }).catch(error => {
-      if (error.response) {
-        return {
-          error: {
-            statusCode: error.response.status,
-            message: error.response.data.error.message,
-          },
-        };
-      } else {
-        return {
-          error: {
-            statusCode: 500,
-            message: "Keyrock connection failed",
-          },
-        };
-      }
-    })
+    const result = await axios
+      .get(`${this.baseUrl}/v1/users/${userId}`, {
+        headers: {
+          "X-Auth-token": token,
+        },
+      })
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        if (error.response) {
+          return {
+            error: {
+              statusCode: error.response.status,
+              message: error.response.data.error.message,
+            },
+          };
+        } else {
+          return {
+            error: {
+              statusCode: 500,
+              message: "Keyrock connection failed",
+            },
+          };
+        }
+      });
     return result;
   }
 
   static async getUsers(token) {
-    console.log(token);
     const result = await axios
       .get(`${this.baseUrl}/v1/users`, {
         headers: {
@@ -165,6 +167,39 @@ export class Keyrock {
       });
 
     return user;
+  }
+
+  static async getUserRoles(userId, token) {
+    const result = await axios
+      .get(
+        `${this.baseUrl}/v1/applications/${this.appId}/users/${userId}/roles`,
+        {
+          headers: {
+            "X-Auth-token": token
+          }
+        }
+      )
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        if (error.response) {
+          return {
+            error: {
+              statusCode: error.response.status,
+              message: error.response.data.error.message,
+            },
+          };
+        } else {
+          return {
+            error: {
+              statusCode: 500,
+              message: "Keyrock connection failed",
+            },
+          };
+        }
+      });
+    return result;
   }
 
   static async deleteUser(token, userId) {
@@ -275,152 +310,207 @@ export class Keyrock {
 
   //Roles
 
-
   static async createRole(rolName, token) {
+    const result = await axios
+      .post(
+        `${this.baseUrl}/v1/applications/${this.appId}/roles`,
+        {
+          role: {
+            name: rolName,
+          },
+        },
+        {
+          headers: {
+            "X-Auth-token": token,
+          },
+        }
+      )
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        if (error.response) {
+          return {
+            error: {
+              statusCode: error.response.status,
+              message: error.response.data.error.message,
+            },
+          };
+        } else {
+          return {
+            error: {
+              statusCode: 500,
+              message: "Keyrock connection failed",
+            },
+          };
+        }
+      });
+    return result;
+  }
 
-    const result = await axios.post(`${this.baseUrl}/v1/applications/${this.appId}/roles`, {
-      role:{
-        name: rolName
-      }
-    }, {
-      headers:{
-        "X-Auth-token": token
-      }
-    }).then(response => {return response.data}).catch(error => {
-      if (error.response) {
-        return {
-          error: {
-            statusCode: error.response.status,
-            message: error.response.data.error.message,
-          },
-        };
-      } else {
-        return {
-          error: {
-            statusCode: 500,
-            message: "Keyrock connection failed",
-          },
-        };
-      }
-    })
+  static async getRole(rolId, token) {
+    const result = await axios
+      .get(`${this.baseUrl}/v1/applications/${this.appId}/roles/${rolId}`, {
+        headers: {
+          "X-Auth-token": token,
+        },
+      })
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        if (error.response) {
+          return {
+            error: {
+              statusCode: error.response.status,
+              message: error.response.data.error.message,
+            },
+          };
+        } else {
+          return {
+            error: {
+              statusCode: 500,
+              message: "Keyrock connection failed",
+            },
+          };
+        }
+      });
     return result;
   }
 
   static async getRoles(token) {
-    const result = await axios.get(`${this.baseUrl}/v1/applications/${this.appId}/roles`, {
-      headers:{
-        "X-Auth-token": token
-      }
-    })
-    .then(response => {return response.data})
-    .catch(error => {
-      if (error.response) {
-        return {
-          error: {
-            statusCode: error.response.status,
-            message: error.response.data.error.message,
-          },
-        };
-      } else {
-        return {
-          error: {
-            statusCode: 500,
-            message: "Keyrock connection failed",
-          },
-        };
-      }
-    })
+    const result = await axios
+      .get(`${this.baseUrl}/v1/applications/${this.appId}/roles`, {
+        headers: {
+          "X-Auth-token": token,
+        },
+      })
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        if (error.response) {
+          return {
+            error: {
+              statusCode: error.response.status,
+              message: error.response.data.error.message,
+            },
+          };
+        } else {
+          return {
+            error: {
+              statusCode: 500,
+              message: "Keyrock connection failed",
+            },
+          };
+        }
+      });
     return result;
   }
 
   static async updateRole(rolName, rolId, token) {
-
-    const result = await axios.patch(`${this.baseUrl}/v1/applications/${this.appId}/roles/${rolId}`, {
-        role: {
-          name: rolName
+    const result = await axios
+      .patch(
+        `${this.baseUrl}/v1/applications/${this.appId}/roles/${rolId}`,
+        {
+          role: {
+            name: rolName,
+          },
+        },
+        {
+          headers: {
+            "X-Auth-token": token,
+          },
         }
-    }, {
-      headers:{
-        "X-Auth-token": token
-      }
-    }).then(response => {return response.data})
-    .catch(error => {
-      if (error.response) {
-        return {
-          error: {
-            statusCode: error.response.status,
-            message: error.response.data.error.message,
-          },
-        };
-      } else {
-        return {
-          error: {
-            statusCode: 500,
-            message: "Keyrock connection failed",
-          },
-        };
-      }
-    })
+      )
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        if (error.response) {
+          return {
+            error: {
+              statusCode: error.response.status,
+              message: error.response.data.error.message,
+            },
+          };
+        } else {
+          return {
+            error: {
+              statusCode: 500,
+              message: "Keyrock connection failed",
+            },
+          };
+        }
+      });
     return result;
   }
 
   static async deleteRole(rolId, token) {
-    
-    const result = await axios.delete(`${this.baseUrl}/v1/applications/${this.appId}/roles/${rolId}`, {
-      headers:{
-        "X-Auth-token": token
-      }
-    })
-    .then(response => {return response.data})
-    .catch(error => {
-      if (error.response) {
-        return {
-          error: {
-            statusCode: error.response.status,
-            message: error.response.data.error.message,
-          },
-        };
-      } else {
-        return {
-          error: {
-            statusCode: 500,
-            message: "Keyrock connection failed",
-          },
-        };
-      }
-    })
+    const result = await axios
+      .delete(`${this.baseUrl}/v1/applications/${this.appId}/roles/${rolId}`, {
+        headers: {
+          "X-Auth-token": token,
+        },
+      })
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        if (error.response) {
+          return {
+            error: {
+              statusCode: error.response.status,
+              message: error.response.data.error.message,
+            },
+          };
+        } else {
+          return {
+            error: {
+              statusCode: 500,
+              message: "Keyrock connection failed",
+            },
+          };
+        }
+      });
     return result;
   }
 
   static async assingRole(rolId, userId, token) {
-console.log(token);
-    const result = await axios.put(`${this.baseUrl}/v1/applications/${this.appId}/users/${userId}/roles/${rolId}`, {}, {
-      headers:{
-        "X-Auth-token": token,
-        "Content-Type": "application/json"
-      }
-    })
-    .then(response => { return response.data})
-    .catch(error => {
-      if (error.response) {
-        return {
-          error: {
-            statusCode: error.response.status,
-            message: error.response.data.error.message,
+    console.log(token);
+    const result = await axios
+      .put(
+        `${this.baseUrl}/v1/applications/${this.appId}/users/${userId}/roles/${rolId}`,
+        {},
+        {
+          headers: {
+            "X-Auth-token": token,
+            "Content-Type": "application/json",
           },
-        };
-      } else {
-        return {
-          error: {
-            statusCode: 500,
-            message: "Keyrock connection failed",
-          },
-        };
-      }
-    })
+        }
+      )
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        if (error.response) {
+          return {
+            error: {
+              statusCode: error.response.status,
+              message: error.response.data.error.message,
+            },
+          };
+        } else {
+          return {
+            error: {
+              statusCode: 500,
+              message: "Keyrock connection failed",
+            },
+          };
+        }
+      });
     return result;
   }
-
 
   //Utils
 

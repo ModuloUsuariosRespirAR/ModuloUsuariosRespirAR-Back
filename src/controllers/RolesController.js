@@ -17,6 +17,19 @@ export class RolesController {
           }
     }
 
+    static async getRole(req, res) {
+
+      const token = req.headers["x-auth-token"];
+      const rolId = req.params.rolId;
+      const result = await Keyrock.getRole(rolId, token);
+      
+      if(result.error){
+        res.status(result.error.statusCode).json(result)
+      }else{
+        res.json(result)
+      }
+    }
+
     static async list(req, res) {
       const token = req.headers["x-auth-token"];
       const result = await Keyrock.getRoles(token);

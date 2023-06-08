@@ -165,6 +165,67 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "User Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-token",
+								"value": "f3851459-b6ff-4ea0-bf79-4e2c010e73b5",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/users/user/:userId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"user",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "11721ddb-8444-4d00-b95b-57ece416160c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get User Roles",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-token",
+								"value": "9872bce7-30b9-4e0d-9128-1d9e20102273",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/users/user/c6138c73-8a46-4210-b670-328698d756fb/roles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"user",
+								"c6138c73-8a46-4210-b670-328698d756fb",
+								"roles"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -325,6 +386,33 @@
 							"path": [
 								"roles",
 								"assign"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Role Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-token",
+								"value": "f3851459-b6ff-4ea0-bf79-4e2c010e73b5",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/roles/role/7c819ad8-62a6-4a83-814c-ebbc44dc93eb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"roles",
+								"role",
+								"7c819ad8-62a6-4a83-814c-ebbc44dc93eb"
 							]
 						}
 					},

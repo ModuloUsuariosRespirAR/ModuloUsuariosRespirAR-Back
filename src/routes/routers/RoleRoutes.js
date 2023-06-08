@@ -6,6 +6,7 @@ export class RoleRoutes {
 
   static {
     this.router.post("/create", RolesController.create);
+    this.router.get("/role/:rolId", RolesController.getRole);
     this.router.get("/list", RolesController.list);
     this.router.put("/update/:rolId", RolesController.update);
     this.router.delete("/delete/:rolId", RolesController.delete);
