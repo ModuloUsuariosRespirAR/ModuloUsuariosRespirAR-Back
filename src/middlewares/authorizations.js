@@ -42,7 +42,7 @@ export class Authorizations {
   }
 
   static async adminOnly(req, res, next) {
-    console.log("Admin Only");
+    
     const accessToken = req.headers["accesstoken"];
     const userInfo = await Keyrock.getUserInfo(accessToken);
 
