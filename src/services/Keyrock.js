@@ -7,6 +7,33 @@ export class Keyrock {
   static appId = process.env.KEYROCK_APP_ID;
   static appSecret = process.env.KEYROCK_APP_SECRET;
 
+
+  static async setupKeyrockRoles(){
+
+    const username = "admin@test.com";
+    const password = "1234";
+    const access_token = await this.getAccessToken(username,password);
+
+    if(!access_token.error){
+
+      const authToken = await this.getApiToken(username, password, access_token);
+      const result = await this.getRoles(authToken);
+
+      if(result.roles.find((rol) => rol.name == "Modify")=== undefined) {
+        this.createRole("Modify", authToken);
+      }
+      if(result.roles.find((rol) => rol.name == "ReadOnly")=== undefined) {
+        this.createRole("ReadOnly", authToken);
+      }
+    } else {
+      console.log("ERROR: No se pudo inicializar Keyrock");
+    }
+    
+
+    
+
+  }
+
   //Users
 
   static async getAccessToken(username, password) {
@@ -50,6 +77,34 @@ export class Keyrock {
     } else {
       return result;
     }
+  }
+
+  static async getUserIdByToken(token) {
+    const result = await axios.get(`${this.baseUrl}/v1/auth/tokens`, {
+      headers: {
+        "X-Auth-token": token,
+        "X-Subject-token": token
+      }
+    })
+    .then(response => {return response.data})
+    .catch(error => {
+      if (error.response) {
+        return {
+          error: {
+            statusCode: error.response.status,
+            message: error.response.data.error.message,
+          },
+        };
+      } else {
+        return {
+          error: {
+            statusCode: 500,
+            message: "Keyrock connection failed",
+          },
+        };
+      }
+    });
+    return result;
   }
 
   static async getApiToken(username, password, token) {
@@ -163,7 +218,21 @@ export class Keyrock {
         return res.data;
       })
       .catch((error) => {
-        return error;
+        if (error.response) {
+          return {
+            error: {
+              statusCode: error.response.status,
+              message: error.response.data
+            },
+          };
+        } else {
+          return {
+            error: {
+              statusCode: 500,
+              message: "Keyrock connection failed",
+            },
+          };
+        }
       });
 
     return user;
@@ -516,7 +585,7 @@ export class Keyrock {
 
   static buildHeader() {
     const key = `${this.appId}:${this.appSecret}`;
-    const base64 = new Buffer(key).toString("base64");
+    const base64 = Buffer.from(key).toString("base64");
     // const base64 = Buffer.from(key, "base64");
     return "Basic " + base64;
   }
