@@ -10,28 +10,27 @@ export class Keyrock {
 
   static async setupKeyrockRoles(){
 
-    const username = "admin@test.com";
-    const password = "1234";
-    const access_token = await this.getAccessToken(username,password);
+    setTimeout(async function() {
+      const username = "admin@test.com";
+      const password = "1234";
+      const access_token = await Keyrock.getAccessToken(username,password);
 
-    if(!access_token.error){
+      if(!access_token.error){
 
-      const authToken = await this.getApiToken(username, password, access_token);
-      const result = await this.getRoles(authToken);
+        const authToken = await Keyrock.getApiToken(username, password, access_token);
+        const result = await Keyrock.getRoles(authToken);
 
-      if(result.roles.find((rol) => rol.name == "Modify")=== undefined) {
-        this.createRole("Modify", authToken);
+        if(result.roles.find((rol) => rol.name == "Modify")=== undefined) {
+          Keyrock.createRole("Modify", authToken);
+        }
+        if(result.roles.find((rol) => rol.name == "ReadOnly")=== undefined) {
+          Keyrock.createRole("ReadOnly", authToken);
+        }
+      } else {
+        console.log("ERROR: No se pudo inicializar Keyrock");
       }
-      if(result.roles.find((rol) => rol.name == "ReadOnly")=== undefined) {
-        this.createRole("ReadOnly", authToken);
-      }
-    } else {
-      console.log("ERROR: No se pudo inicializar Keyrock");
-    }
-    
-
-    
-
+      console.log('Conexion con Keyrock establecida satisfactoriamente');
+    }, 30000);
   }
 
   //Users
