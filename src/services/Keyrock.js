@@ -10,28 +10,42 @@ export class Keyrock {
 
   static async setupKeyrockRoles(){
 
-    const username = "admin@test.com";
-    const password = "1234";
-    const access_token = await this.getAccessToken(username,password);
+    setTimeout(async function() {
+      const username = "admin@test.com";
+      const password = "1234";
+      const access_token = await Keyrock.getAccessToken(username,password);
 
-    if(!access_token.error){
+      if(!access_token.error){
 
-      const authToken = await this.getApiToken(username, password, access_token);
-      const result = await this.getRoles(authToken);
+        const authToken = await Keyrock.getApiToken(username, password, access_token);
+        const result = await Keyrock.getRoles(authToken);
 
-      if(result.roles.find((rol) => rol.name == "Modify")=== undefined) {
-        this.createRole("Modify", authToken);
+        if(result.roles.find((rol) => rol.name == "Modify")=== undefined) {
+          const resultRol = await Keyrock.createRole("Modify", authToken);
+          await Keyrock.setupKeyrockPermissions(resultRol.role.id, authToken);
+        }
+        if(result.roles.find((rol) => rol.name == "ReadOnly")=== undefined) {
+          const resultRol = await Keyrock.createRole("ReadOnly", authToken);
+          await Keyrock.setupKeyrockPermissions(resultRol.role.id, authToken);
+        }
+      } else {
+        console.log("ERROR: No se pudo inicializar Keyrock");
       }
-      if(result.roles.find((rol) => rol.name == "ReadOnly")=== undefined) {
-        this.createRole("ReadOnly", authToken);
-      }
-    } else {
-      console.log("ERROR: No se pudo inicializar Keyrock");
+      console.log('Conexion con Keyrock establecida satisfactoriamente');
+    }, 30000);
+  }
+
+  static async setupKeyrockPermissions(rolId, apiToken) {
+    
+    for(let i=1; i <=6 ; i++ ) {
+      await axios.put(`${this.baseUrl}/v1/applications/${this.appId}/roles/${rolId}/permissions/${i}`, {}, {
+        headers: {
+          "X-Auth-Token": apiToken,
+        }
+      });
     }
-    
 
-    
-
+    return;
   }
 
   //Users
@@ -546,7 +560,7 @@ export class Keyrock {
   }
 
   static async assingRole(rolId, userId, token) {
-    console.log(token);
+
     const result = await axios
       .put(
         `${this.baseUrl}/v1/applications/${this.appId}/users/${userId}/roles/${rolId}`,
@@ -580,6 +594,10 @@ export class Keyrock {
       });
     return result;
   }
+
+  // Permisos
+
+
 
   //Utils
 
