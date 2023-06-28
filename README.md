@@ -3,10 +3,10 @@
 ## Info: 📋
 
 #### UserInfo:
-[![UserInfo](https://prnt.sc/3WInEaTMi9NA "UserInfo")](https://prnt.sc/3WInEaTMi9NA "UserInfo")
+[![UserInfo](https://i.imgur.com/GI0gNJ7.png "UserInfo")](https://i.imgur.com/GI0gNJ7.png "UserInfo")
 
 #### Error:
-[![ErrorExample](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")
+[![ErrorExample](https://i.imgur.com/tD3KlZf.png "ErrorExample")](https://i.imgur.com/tD3KlZf.png "ErrorExample")
 
 ### Login : /login | POST
 
@@ -21,9 +21,9 @@
 
 |  Successful | Error  |
 | ------------ | ------------ |
-| accessToken: token  | error:{[![ErrorExample](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")}  |
+| accessToken: token  | [![ErrorExample](https://i.imgur.com/tD3KlZf.png "ErrorExample")](https://i.imgur.com/tD3KlZf.png "ErrorExample")  |
 |  x-auth-token: token  |-  |
-| user: {[![UserInfo](https://prnt.sc/3WInEaTMi9NA "UserInfo")](https://prnt.sc/3WInEaTMi9NA "UserInfo")}  | -  |
+| [![UserInfo](https://i.imgur.com/GI0gNJ7.png "UserInfo")](https://i.imgur.com/GI0gNJ7.png "UserInfo")  | -  |
 
 ### Get Users : /users/list | GET
 
@@ -37,33 +37,33 @@
 
 | Successful  | Error   |
 | ------------ | ------------ |
-| users: [![users](https://prnt.sc/UOpv5JHg7YjK "users")](https://prnt.sc/UOpv5JHg7YjK "users")  | [![ErrorExample](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")  |
+| users: [![users](https://i.imgur.com/rFltlHn.png "users")](https://i.imgur.com/rFltlHn.png "users")  | [![ErrorExample](https://i.imgur.com/tD3KlZf.png "ErrorExample")](https://i.imgur.com/tD3KlZf.png "ErrorExample")  |
 
 ### Create User : /users/create | POST
 
 #### Request:
 | Body  | Headers  |
 | ------------ | ------------ |
-| [![Body](# "Body")](https://prnt.sc/ONh9j3sR55Z5 "Body")  | X-Auth-token: token  |
+| [![Body](https://i.imgur.com/LJmmOdE.png "Body")](https://i.imgur.com/LJmmOdE.png "Body")  | X-Auth-token: token  |
 
 #### Response:
 
 | Successful  | Error   |
 | ------------ | ------------ |
-| [![CreatedUser](https://prnt.sc/pOA6FtOn5JMn "CreatedUser")](https://prnt.sc/pOA6FtOn5JMn "CreatedUser") | [![ErrorExample](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")  |
+| [![CreatedUser](https://i.imgur.com/qFsSgMw.png "CreatedUser")](https://i.imgur.com/qFsSgMw.png "CreatedUser") | [![ErrorExample](https://i.imgur.com/tD3KlZf.png "ErrorExample")](https://i.imgur.com/tD3KlZf.png "ErrorExample")  |
 
 ### Update User : /users/update/:userId | POST
 
 #### Request:
 | Body  | Headers  |
 | ------------ | ------------ |
-| [![Body](# "Body")](https://prnt.sc/7A5W6FG2-1NQ "Body")  | X-Auth-token: token  |
+|  [![Body](https://i.imgur.com/xnlUrx7.png "Body")](https://i.imgur.com/xnlUrx7.png "Body")  | X-Auth-token: token  |
 
 #### Response:
 
 | Successful  | Error   |
 | ------------ | ------------ |
-| [![UpdatedUser](https://prnt.sc/XN-UjGDrwNIN "CreatedUser")](https://prnt.sc/XN-UjGDrwNIN "CreatedUser") | [![ErrorExample](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")  |
+| [![UpdatedUser](https://i.imgur.com/5fNatrx.png "UpdatedUser")](https://i.imgur.com/5fNatrx.png "UpdatedUser") | [![ErrorExample](https://i.imgur.com/tD3KlZf.png "ErrorExample")](https://i.imgur.com/tD3KlZf.png "ErrorExample") |
 
 ### Delete User : /users/delete/:userId | DELETE
 
@@ -76,7 +76,7 @@
 
 | Successful  | Error   |
 | ------------ | ------------ |
-| - | [![ErrorExample](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")  |
+| - | [![ErrorExample](https://i.imgur.com/tD3KlZf.png "ErrorExample")](https://i.imgur.com/tD3KlZf.png "ErrorExample")  |
 
 
 <hr />
@@ -92,7 +92,7 @@
 
 | Successful  | Error   |
 | ------------ | ------------ |
-| [![Roles](https://prnt.sc/K-W1IND1wBUX "roles")](https://prnt.sc/K-W1IND1wBUX "roles") | [![ErrorExample](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")  |
+| [![Roles](https://i.imgur.com/g1KNy2M.png "roles")](https://i.imgur.com/g1KNy2M.png "roles") | [![ErrorExample](https://i.imgur.com/tD3KlZf.png "ErrorExample")](https://i.imgur.com/tD3KlZf.png "ErrorExample")  |
 
 ### Create role : /roles/create | POST
 
@@ -105,7 +105,7 @@
 
 | Successful  | Error   |
 | ------------ | ------------ |
-| [![Role](https://i.imgur.com/2ziggc5.png "role")](https://i.imgur.com/2ziggc5.png "role") | [![ErrorExample](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")  |
+| [![Role](https://i.imgur.com/2ziggc5.png "role")](https://i.imgur.com/2ziggc5.png "role") | [![ErrorExample](https://i.imgur.com/tD3KlZf.png "ErrorExample")](https://i.imgur.com/tD3KlZf.png "ErrorExample")  |
 
 ### Update Role : /roles/update/:rolId | POST
 
@@ -118,7 +118,7 @@
 
 | Successful  | Error   |
 | ------------ | ------------ |
-| [![UpdatedRole](https://i.imgur.com/n5VT8dJ.png "UpdatedRole")](https://i.imgur.com/n5VT8dJ.png "UpdatedRole") | [![ErrorExample](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")  |
+| [![UpdatedRole](https://i.imgur.com/n5VT8dJ.png "UpdatedRole")](https://i.imgur.com/n5VT8dJ.png "UpdatedRole") | [![ErrorExample](https://i.imgur.com/tD3KlZf.png "ErrorExample")](https://i.imgur.com/tD3KlZf.png "ErrorExample")  |
 
 ### Delete Role : /roles/delete/:rolId | POST
 
@@ -131,6 +131,6 @@
 
 | Successful  | Error   |
 | ------------ | ------------ |
-|- | [![ErrorExample](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")](https://prnt.sc/tKyyEDRnAOCf "ErrorExample")  |
+|- | [![ErrorExample](https://i.imgur.com/tD3KlZf.png "ErrorExample")](https://i.imgur.com/tD3KlZf.png "ErrorExample")  |
 
 <hr/>
