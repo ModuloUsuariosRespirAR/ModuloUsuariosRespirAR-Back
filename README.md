@@ -52,7 +52,7 @@
 | ------------ | ------------ |
 | [![CreatedUser](https://i.imgur.com/qFsSgMw.png "CreatedUser")](https://i.imgur.com/qFsSgMw.png "CreatedUser") | [![ErrorExample](https://i.imgur.com/tD3KlZf.png "ErrorExample")](https://i.imgur.com/tD3KlZf.png "ErrorExample")  |
 
-### Update User : /users/update/:userId | POST
+### Update User : /users/update/:userId | PUT
 
 #### Request:
 | Body  | Headers  |
